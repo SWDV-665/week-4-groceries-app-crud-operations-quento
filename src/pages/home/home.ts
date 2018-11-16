@@ -50,6 +50,21 @@ export class HomePage {
     
   }
 
+  editItem(item, index){
+    // Troubleshooting
+    console.log("Edit item .." + item.name, index);
+    
+    // Show item removal message (toast)
+    const toast = this.toastCtrl.create({
+      message: 'Editing item - ' + item.name + " ...",
+      duration: 3000
+    });
+    toast.present();
+
+    // Delete item from items array    
+    this.showEditItemPrompt(item, index);
+  }
+
   addItem(){
     console.log("Item added"); 
     this.showAddItemPrompt();   
@@ -83,6 +98,43 @@ export class HomePage {
             
             // Add item to array
             this.items.push(data);
+
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
+
+  showEditItemPrompt(item, index) {
+    const prompt = this.alertCtrl.create({
+      title: 'Edit Item',
+      message: "Please edit an item",
+      inputs: [
+        {
+          name: 'name',
+          placeholder: 'Name',
+          value: item.name
+        },
+        {
+          name: 'quantity',
+          placeholder: 'Quantity',
+          value: item.quantity
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: item => {
+            console.log('Saved clicked', item);            
+            // Edit item to array
+            this.items[index] = item;
 
           }
         }
