@@ -15,6 +15,8 @@ export class InputDialogServiceProvider {
     console.log('Hello InputDialogServiceProvider Provider');
   }
 
+  qty = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+
   showPrompt(item?, index?) {
     const prompt = this.alertCtrl.create({
       title: item ? 'Edit Item' : 'Add Item',
@@ -25,12 +27,12 @@ export class InputDialogServiceProvider {
           placeholder: 'Name',
           value: item ? item.name : null
         },
-        {
-          name: 'quantity',
-          placeholder: 'Quantity',
-          value: item ? item.quantity : null
-        }
-      ],
+        {          
+          name: 'quantity',          
+          placeholder: 'Quantity',                             
+          value: item ? item.quantity : null,          
+        }        
+      ],           
       buttons: [
         {
           text: 'Cancel',
