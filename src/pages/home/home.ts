@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { GroceriesServiceProvider } from '../../providers/groceries-service/groceries-service';
 
 @Component({
   selector: 'page-home',
@@ -11,27 +12,13 @@ export class HomePage {
 
   title = "Grocery";
 
-  items = [
-    {
-      name: "Milk",
-      quantity: 2
-    },
-    {
-      name: "Bread",
-      quantity: 4
-    },
-    {
-      name: "Eggs",
-      quantity: 3
-    },
-    {
-      name: "Grapes", 
-      quantity: 5
-    }
-  ];
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController, public alertCtrl: AlertController, public dataService: GroceriesServiceProvider) {
 
+  }
+
+  loadItems(){
+    return this.dataService.items;
   }
 
   removeItem(item, index){
@@ -45,8 +32,8 @@ export class HomePage {
     });
     toast.present();
 
-    // Delete item from items array
-    this.items.splice(index, 1);
+    // Use Groceries Provider to remove item
+    this.dataService.removeItem(index);
     
   }
 
@@ -97,7 +84,7 @@ export class HomePage {
             console.log('Saved clicked', data);
             
             // Add item to array
-            this.items.push(data);
+            this.dataService.addItem(item);
 
           }
         }
@@ -134,7 +121,7 @@ export class HomePage {
           handler: item => {
             console.log('Saved clicked', item);            
             // Edit item to array
-            this.items[index] = item;
+            this.dataService.editItem(item,index);
 
           }
         }
