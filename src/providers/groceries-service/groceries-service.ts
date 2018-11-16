@@ -9,24 +9,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class GroceriesServiceProvider {
   
-  items = [
-    {
-      name: "Milk",
-      quantity: 2
-    },
-    {
-      name: "Bread",
-      quantity: 4
-    },
-    {
-      name: "Eggs",
-      quantity: 3
-    },
-    {
-      name: "Grapes", 
-      quantity: 5
-    }
-  ];
+  items = [];
 
   constructor() {
     console.log('Hello GroceriesServiceProvider Provider');
