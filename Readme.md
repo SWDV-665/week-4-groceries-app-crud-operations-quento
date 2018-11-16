@@ -1,8 +1,10 @@
-# Week 2 - Groceries App
+# Week 4 - Groceries App
 
-## Adding and Removing items
+## CRUD Operations
 
-As discussed in the video, the current status of the app should do add and delete operations.
+Groceries app should be able to perform create, read, update, and delete (CRUD).
+
+For Add Item - Use a drop downf or Quantity instead of an input field.
 
 Capture the screenshots of each tab or screencast walking through the flow of each tab.
 
