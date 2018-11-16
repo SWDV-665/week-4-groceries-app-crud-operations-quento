@@ -17,8 +17,9 @@ export class HomePage {
 
   }
 
+  // Get initial groceries list from provider.
   loadItems(){
-    return this.dataService.items;
+    return this.dataService.getItems();
   }
 
   removeItem(item, index){
@@ -84,7 +85,7 @@ export class HomePage {
             console.log('Saved clicked', data);
             
             // Add item to array
-            this.dataService.addItem(item);
+            this.dataService.addItem(data);
 
           }
         }

@@ -32,6 +32,10 @@ export class GroceriesServiceProvider {
     console.log('Hello GroceriesServiceProvider Provider');
   }
 
+  getItems(){
+    return this.items;
+  }
+
   removeItem(index){
     this.items.splice(index, 1);
   }
